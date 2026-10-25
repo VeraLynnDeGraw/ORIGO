@@ -63,3 +63,29 @@ background observation are not connected.
 
 Preserve the distinction between planned, implemented, and verified
 capabilities. Truth without fear.
+
+## ORIGO Shell 0.1.0
+
+The first runnable workspace shell, built with HTML, CSS, and JavaScript.
+
+### Run locally
+
+    python3 -m http.server 8000 --bind 127.0.0.1 --directory web
+
+Open http://127.0.0.1:8000 in your browser.
+
+### Included
+
+- CODE and SIGNAL working modes
+- Manually reorderable panels
+- Browser-local layout and signal persistence
+- Observer interface indicator
+- Responsive desktop and mobile layouts
+
+### Current boundaries
+
+Layout preferences and signals use browser local storage.
+They are not synchronized between devices. CODE execution,
+LUMEN services, and actual background observation are not connected.
+
+Truth without fear.
