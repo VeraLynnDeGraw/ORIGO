@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101312">
+  <title>ORIGO — Workspace</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="ORIGO workspace">
+        <span class="brand-mark">O</span>
+        <span>ORIGO<small>PERSONAL ENVIRONMENT</small></span>
+      </a>
+
+      <div class="side-label">ENVIRONMENT</div>
+      <button class="nav-item active" data-mode="workspace">
+        <span>◫</span> Workspace
+      </button>
+      <button class="nav-item" data-mode="code">
+        <span>⌘</span> CODE
+      </button>
+      <button class="nav-item" data-mode="signal">
+        <span>⌁</span> SIGNAL
+      </button>
+
+      <div class="side-label">CONTINUITY</div>
+      <div class="side-note">
+        <span class="tiny-dot"></span>
+        <span>SIGNALWEAVER<small>Continuity layer · planned</small></span>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="principle">VERUM SINE TIMORE</div>
+        <small>Truth without fear.</small>
+        <div class="version">ORIGO SHELL 0.1</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="breadcrumbs">
+          <span class="muted">ENVIRONMENT</span>
+          <span class="slash">/</span>
+          <strong id="page-title">WORKSPACE</strong>
+        </div>
+        <div class="top-actions">
+          <span class="local-pill"><span class="tiny-dot"></span> LOCAL</span>
+          <button id="observer-toggle" class="observer" aria-pressed="true">
+            <span id="observer-icon">◉</span>
+            <span id="observer-label">OBSERVER ACTIVE</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="welcome">
+        <div class="eyebrow">YOUR ENVIRONMENT · 001</div>
+        <h1 id="welcome-title">A place to <span>begin.</span></h1>
+        <p id="welcome-description">
+          Your workspace. Your arrangement. Your direction.
+        </p>
+      </section>
+
+      <section class="workspace-heading">
+        <div>
+          <span class="section-kicker">THE WORKSPACE</span>
+          <h2>Working surface</h2>
+        </div>
+        <button id="reset-layout" class="quiet-button">Reset layout ↺</button>
+      </section>
+
+      <div id="panels" class="panels">
+        <section class="panel" data-panel="field">
+          <header class="panel-header">
+            <span class="panel-symbol">◈</span>
+            <div class="panel-title">
+              <h3>Field status</h3>
+              <small>ENVIRONMENT / 01</small>
+            </div>
+            <span class="panel-status">READY</span>
+            <div class="panel-move">
+              <button data-move="-1" aria-label="Move Field status earlier">↑</button>
+              <button data-move="1" aria-label="Move Field status later">↓</button>
+            </div>
+          </header>
+          <div class="panel-body">
+            <div class="status-line">
+              <span class="status-light"></span>
+              <div><strong>LOCAL VAULT</strong><small>Browser workspace available</small></div>
+              <span class="right-value">AVAILABLE</span>
+            </div>
+            <div class="status-line">
+              <span class="status-light idle"></span>
+              <div><strong>LUMEN</strong><small>No service connected</small></div>
+              <span class="right-value muted">STANDBY</span>
+            </div>
+            <div class="status-line">
+              <span class="status-light idle"></span>
+              <div><strong>EXECUTION</strong><small>No commands launched by this shell</small></div>
+              <span class="right-value muted">IDLE</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="mode">
+          <header class="panel-header">
+            <span class="panel-symbol">⌘</span>
+            <div class="panel-title">
+              <h3>Working mode</h3>
+              <small>SELECT YOUR INTENTION</small>
+            </div>
+            <div class="panel-move">
+              <button data-move="-1" aria-label="Move Working mode earlier">↑</button>
+              <button data-move="1" aria-label="Move Working mode later">↓</button>
+            </div>
+          </header>
+          <div class="panel-body mode-options">
+            <button class="mode-card selected" data-mode="code">
+              <span class="mode-glyph">⌘</span>
+              <strong>CODE</strong>
+              <small>Build, inspect, and change software.</small>
+              <span class="mode-arrow">↗</span>
+            </button>
+            <button class="mode-card" data-mode="signal">
+              <span class="mode-glyph">⌁</span>
+              <strong>SIGNAL</strong>
+              <small>Investigate, connect, and question.</small>
+              <span class="mode-arrow">↗</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="panel notes-panel" data-panel="notes">
+          <header class="panel-header">
+            <span class="panel-symbol">✳</span>
+            <div class="panel-title">
+              <h3>Signal capture</h3>
+              <small>A PLACE FOR YOUR THOUGHTS</small>
+            </div>
+            <div class="panel-move">
+              <button data-move="-1" aria-label="Move Signal capture earlier">↑</button>
+              <button data-move="1" aria-label="Move Signal capture later">↓</button>
+            </div>
+          </header>
+          <div class="panel-body">
+            <label for="signal-input">What would you like to preserve?</label>
+            <textarea id="signal-input" rows="4"
+              placeholder="A question, an observation, an idea..."></textarea>
+            <div class="capture-footer">
+              <span id="save-status">STORED ONLY WHEN YOU SAVE</span>
+              <button id="save-signal" class="primary-button">Save signal ↗</button>
+            </div>
+            <p id="capture-message" class="message" role="status"></p>
+          </div>
+        </section>
+
+        <section class="panel observer-panel" data-panel="observer">
+          <header class="panel-header">
+            <span class="panel-symbol">◎</span>
+            <div class="panel-title">
+              <h3>Observer</h3>
+              <small>OBSERVATION CONTROL</small>
+            </div>
+            <div class="panel-move">
+              <button data-move="-1" aria-label="Move Observer earlier">↑</button>
+              <button data-move="1" aria-label="Move Observer later">↓</button>
+            </div>
+          </header>
+          <div class="panel-body observer-body">
+            <div>
+              <strong id="observer-state">Observation is active.</strong>
+              <p id="observer-detail">
+                This is a local interface indicator. No background monitoring service is connected.
+              </p>
+            </div>
+            <span id="observer-orb" class="observer-orb">◉</span>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>ORIGO <span class="muted">/</span> BUILT BRICK BY BRICK</span>
+        <span>NO REMOTE CONNECTIONS CONFIGURED</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
