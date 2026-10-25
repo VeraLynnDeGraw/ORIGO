@@ -1,91 +1,172 @@
 # ORIGO
 
-A sovereign, customizable work environment.
+**A sovereign, customizable work environment.**
 
-## Foundational principles
+ORIGO is an evolving workspace shell designed around user control,
+deliberate arrangement, local continuity, and transparent execution
+boundaries.
 
-- Sovereignty over data and the computing environment.
-- Launch directly into the workspace.
-- Manual control over workspace arrangement.
-- Restore the last saved layout without automatically restarting operations.
-- Responsive support for desktop, Chromebook, and mobile.
-- Transparent background activity and explicit execution boundaries.
-- Preserve continuity independently of any particular coding agent.
+Its first release is a lightweight web interface built with HTML, CSS,
+and JavaScript. The long-term direction is broader, but the current
+implementation remains intentionally small.
 
-## Initial working modes
+**Principle:** `VERUM SINE TIMORE` — Truth without fear.
 
-- CODE — software construction and maintenance.
-- SIGNAL — investigation, evidence, questions, and integration.
+## Project status
 
-## Shared continuity
+- **Current release:** ORIGO Shell 0.1.0
+- **Implementation:** Static web interface
+- **Runtime requirements:** Python 3 and a modern web browser
+- **External services:** None required for the current shell
 
-SIGNALWEAVER preserves decisions, questions, dependencies, and project history.
-It is a continuity layer, not a separate working mode.
+ORIGO is under active development. Planned features should not be
+mistaken for implemented or verified capabilities.
 
-## Initial scope
+## What works today
 
-Build the workspace shell first. Defer agents, external API integrations,
-and unnecessary dependencies until the environment's foundation is established.
+- **Workspace:** A central working surface with four rearrangeable panels.
+- **CODE mode:** An interface for software construction and inspection.
+  Code execution is not connected.
+- **SIGNAL mode:** An interface for investigation, questions, observations,
+  and ideas.
+- **Signal capture:** Save text locally in the browser.
+- **Layout persistence:** Preserve panel arrangement between visits in the
+  same browser storage context.
+- **Preference persistence:** Remember the selected mode and observer
+  indicator.
+- **Responsive interface:** Adapt the layout for desktop and smaller screens.
+- **Manual control:** Rearrange panels or restore the default layout.
 
-## ORIGO Shell 0.1.0
+## Run locally
 
-The first runnable workspace shell, built with HTML, CSS, and JavaScript.
+### Requirements
 
-### Run locally
+- Python 3
+- A modern web browser
 
-From the ORIGO project directory:
+No third-party Python packages or JavaScript build tools are required
+to run the current static shell.
+
+### Start the workspace
+
+From the ORIGO project directory, run:
 
 ```bash
 python3 -m http.server 8000 --bind 127.0.0.1 --directory web
 ```
 
-Open http://127.0.0.1:8000 in your browser.
+Open the following address in your browser:
 
-Stop the server with Ctrl+C in the terminal.
+http://127.0.0.1:8000
 
-### Included
+The server binds to `127.0.0.1`, making it accessible through the local
+machine rather than directly through the network interface.
 
-- Workspace with CODE and SIGNAL modes
-- Manually reorderable panels
-- Browser-local layout and signal persistence
-- Observer interface indicator
-- Responsive desktop and mobile layouts
-- No external services or API connections required
+To stop the server, press `Ctrl+C` in the terminal.
 
-### Current boundaries
+## Project structure
 
-Signals and layout preferences use browser local storage.
-They are not yet stored in a dedicated database or synchronized
-between devices. CODE execution, LUMEN services, and actual
-background observation are not connected.
+```text
+ORIGO/
+├── docs/
+│   └── FOUNDATION.md
+├── web/
+│   ├── index.html
+│   ├── app.js
+│   └── styles.css
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+└── SECURITY.md
+```
 
-### Release principle
+- `web/index.html` — Workspace structure and interface elements.
+- `web/app.js` — Interaction behavior and browser-local persistence.
+- `web/styles.css` — Visual design and responsive layout.
+- `docs/FOUNDATION.md` — Foundational principles and conceptual boundaries.
+- `CONTRIBUTING.md` — Guidance for proposed changes and contributions.
+- `SECURITY.md` — Security reporting guidance.
+- `LICENSE` — MIT License.
 
-Preserve the distinction between planned, implemented, and verified
-capabilities. Truth without fear.
+## Data and execution boundaries
 
-## ORIGO Shell 0.1.0
+The current shell uses browser `localStorage` for signals, layout
+preferences, the selected mode, and the observer indicator.
 
-The first runnable workspace shell, built with HTML, CSS, and JavaScript.
+This means:
 
-### Run locally
+- Data is associated with the browser's storage context, not a dedicated
+  ORIGO database.
+- Data is not automatically synchronized between devices.
+- Clearing browser site data may remove locally stored signals and
+  preferences.
+- The current shell does not provide a built-in signal export or backup
+  feature.
+- The observer toggle changes a local interface indicator; it does not
+  activate or pause a monitoring service.
+- CODE does not execute commands or run programs.
+- LUMEN is not connected to a service or API.
+- SIGNALWEAVER remains a planned continuity layer.
 
-    python3 -m http.server 8000 --bind 127.0.0.1 --directory web
+The interface is designed to run without external services. If the shell
+is later extended with integrations or remote services, their network
+activity and permissions should be documented explicitly.
 
-Open http://127.0.0.1:8000 in your browser.
+## Foundational principles
 
-### Included
+ORIGO is guided by the following principles:
 
-- CODE and SIGNAL working modes
-- Manually reorderable panels
-- Browser-local layout and signal persistence
-- Observer interface indicator
-- Responsive desktop and mobile layouts
+1. **Sovereignty** — The user should retain meaningful control over their
+   data and computing environment.
+2. **Direct access** — Enter the workspace without an unnecessary landing
+   screen.
+3. **Manual arrangement** — Do not silently rearrange the user's workspace.
+4. **Safe restoration** — Restore layout preferences without automatically
+   restarting previous commands or operations.
+5. **Portability** — Design for desktop, Chromebook, and mobile environments.
+6. **Transparency** — Distinguish observation from execution and make
+   background activity visible.
+7. **Separation of concerns** — Keep the workspace, projects, tools,
+   continuity, and execution boundaries distinct.
+8. **Epistemic honesty** — Distinguish what is proposed, implemented,
+   tested, and still unknown.
 
-### Current boundaries
+See [`docs/FOUNDATION.md`](docs/FOUNDATION.md) for the foundational document.
 
-Layout preferences and signals use browser local storage.
-They are not synchronized between devices. CODE execution,
-LUMEN services, and actual background observation are not connected.
+## Development direction
 
-Truth without fear.
+ORIGO is being developed incrementally. Possible future work includes:
+
+- A clearer project and workspace structure.
+- More robust local data management and backup.
+- Testing for core interface behavior.
+- A defined boundary for command execution and permissions.
+- A future LUMEN service integration.
+- SIGNALWEAVER for shared continuity across questions, decisions, and
+  projects.
+
+These are development directions, not promises that the features
+already exist.
+
+## Contributing
+
+Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing a change.
+Focused contributions should explain their purpose, testing, and known
+limitations.
+
+## Security
+
+Read [`SECURITY.md`](SECURITY.md) for vulnerability reporting guidance.
+Do not publish credentials, private keys, tokens, or other sensitive
+information in issues or commits.
+
+## License
+
+ORIGO is distributed under the [MIT License](LICENSE), subject to any
+applicable file-specific notices.
+
+---
+
+**ORIGO — Built brick by brick.**
+
+*Verum sine timore. Truth without fear.*
